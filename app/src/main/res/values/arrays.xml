@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="municipalities_array">
+
+        <item>
+            Beijing is the capital of China and one of the country\'s
+            most important historical and cultural cities. It is located
+            in northern China and has served as the capital during
+            several periods of Chinese history. Beijing is famous for
+            landmarks such as the Forbidden City, the Temple of Heaven,
+            and the Summer Palace. The Great Wall can also be visited
+            in areas near the city. Beijing is an important centre for
+            government, education, technology, and international
+            communication. The city combines traditional architecture
+            with modern buildings and transport systems. Its cultural
+            attractions and historical sites welcome visitors from
+            around the world.
+        </item>
+
+        <item>
+            Shanghai is a major city located on the eastern coast of
+            China, near the mouth of the Yangtze River. It is one of
+            the country\'s leading centres for finance, business,
+            transportation, and international trade. Shanghai is
+            famous for its modern skyline, especially the buildings
+            in the Pudong district. The Oriental Pearl Tower and
+            Shanghai Tower are well-known landmarks. The Bund is
+            another popular attraction, offering views of historic
+            buildings and the Huangpu River. Shanghai also has a
+            rich cultural heritage, traditional gardens, museums,
+            and busy shopping streets. The city plays an important
+            role in China\'s economic development.
+        </item>
+
+        <item>
+            Chongqing is a municipality located in southwestern China.
+            It is known for its mountainous landscape, rivers, and
+            distinctive urban architecture. The city lies near the
+            meeting point of the Yangtze River and the Jialing River.
+            Chongqing is an important transportation and industrial
+            centre in western China. It is also famous for its spicy
+            hot pot, which is a popular part of local food culture.
+            Hongya Cave is one of the city\'s best-known tourist
+            attractions. Chongqing has many bridges, steep roads,
+            and modern buildings that reflect its unique geography.
+            The municipality also includes rural areas and beautiful
+            natural scenery.
+        </item>
+
+        <item>
+            Tianjin is a municipality located in northern China,
+            southeast of Beijing. It is an important port city and
+            transportation centre near the Bohai Sea. Tianjin has
+            played a significant role in China\'s modern commercial
+            and industrial development. The city is known for its
+            mixture of traditional Chinese architecture and historic
+            European-style buildings. Popular attractions include
+            the Tianjin Eye, the Ancient Culture Street, and the
+            Five Great Avenues. Tianjin is also famous for local
+            foods such as Goubuli steamed buns. Today, the city
+            continues to develop its manufacturing, education,
+            technology, and international trade while preserving
+            many historical and cultural attractions.
+        </item>
+
+    </string-array>
+
+</resources>
+
