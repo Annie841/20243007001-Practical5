@@ -9,4 +9,15 @@
     <color name="color_text_light">#FFFFFF</color>
     <color name="color_text_dark">#212121</color>
     <color name="color_default_background">#F5F5F5</color>
+    <!-- Beijing -->
+    <color name="color_beijing">#F44336</color>
+
+    <!-- Shanghai -->
+    <color name="color_shanghai">#FF00FF</color>
+
+    <!-- Tianjin -->
+    <color name="color_tianjin">#424242</color>
+
+    <!-- Chongqing -->
+    <color name="color_chongqing">#FF9800</color>
 </resources>

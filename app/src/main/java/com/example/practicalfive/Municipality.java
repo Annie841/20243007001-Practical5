@@ -1,7 +1,7 @@
 package com.example.practicalfive;
 
 import android.os.Bundle;
-import android.graphics.Color;
+import android.content.res.ColorStateList;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Button;
@@ -24,9 +24,10 @@ public class Municipality extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_municipality);
-        // Prevent content from overlapping system bars
+        // Keep the layout clear of the status and navigation bars
         ViewCompat.setOnApplyWindowInsetsListener(
-                findViewById(R.id.main), (v, insets) -> {
+                findViewById(R.id.municipalityRoot),
+                (v, insets) -> {
 
                     Insets systemBars = insets.getInsets(
                             WindowInsetsCompat.Type.systemBars()
@@ -43,22 +44,24 @@ public class Municipality extends AppCompatActivity {
                 }
         );
 
+        // Step 1: Find UI components
         tvMunicipalityName = findViewById(R.id.tvMunicipalityName);
         tvMunicipalityInfo = findViewById(R.id.tvMunicipalityInfo);
         ivMunicipality = findViewById(R.id.ivMunicipality);
         btnVisitSite = findViewById(R.id.btnVisitSite);
 
-        // Receive municipality name from MainActivity
+        // Step 2: Receive municipality name
         String municipality = getIntent().getStringExtra(
                 MainActivity.EXTRA_MUNICIPALITY
         );
 
-        // Validate using TextProcessor
+        // Step 3: Validate municipality name
         TextProcessor processor = new TextProcessor();
 
         String validName = processor.processMunicipality(municipality);
 
         if (validName == null) {
+
             Toast.makeText(
                     this,
                     "Invalid municipality",
@@ -69,69 +72,91 @@ public class Municipality extends AppCompatActivity {
             return;
         }
 
-        // Display municipality name
+        // Step 4: Display municipality name
         tvMunicipalityName.setText(validName);
 
-        // Get information array
-        String[] information =
-                getResources().getStringArray(
-                        R.array.municipalities_array
-                );
+        // Step 5: Get municipality information
+        String[] information = getResources().getStringArray(
+                R.array.municipalities_array
+        );
 
+        // Step 6: Select resources
         int color;
 
         switch (validName) {
 
             case "Beijing":
 
-                ivMunicipality.setImageResource(R.drawable.beijing);
+                ivMunicipality.setImageResource(
+                        R.drawable.beijing
+                );
 
                 tvMunicipalityInfo.setText(information[0]);
 
-                color = Color.RED;
+                color = getColor(R.color.color_beijing);
 
                 break;
 
             case "Shanghai":
 
-                ivMunicipality.setImageResource(R.drawable.shanghai);
+                ivMunicipality.setImageResource(
+                        R.drawable.shanghai
+                );
 
                 tvMunicipalityInfo.setText(information[1]);
 
-                color = Color.MAGENTA;
+                color = getColor(R.color.color_shanghai);
 
                 break;
 
             case "Chongqing":
 
-                ivMunicipality.setImageResource(R.drawable.chongqing);
+                ivMunicipality.setImageResource(
+                        R.drawable.chongqing
+                );
 
                 tvMunicipalityInfo.setText(information[2]);
 
-                color = Color.rgb(255, 165, 0);
+                color = getColor(R.color.color_chongqing);
 
                 break;
 
             case "Tianjin":
 
-                ivMunicipality.setImageResource(R.drawable.tianjin);
+                ivMunicipality.setImageResource(
+                        R.drawable.tianjin
+                );
 
                 tvMunicipalityInfo.setText(information[3]);
 
-                color = Color.DKGRAY;
+                color = getColor(R.color.color_tianjin);
 
                 break;
 
             default:
+
                 finish();
                 return;
         }
 
-        // Apply theme colors
+        // Step 7: Change name background colour
         tvMunicipalityName.setBackgroundColor(color);
+
+        // Step 8: Change information text colour
+        tvMunicipalityInfo.setTextColor(color);
+
+        // Step 9: Change Visit site button colour
         btnVisitSite.setBackgroundTintList(
-                android.content.res.ColorStateList.valueOf(color)
+                ColorStateList.valueOf(color)
         );
 
+        // Step 10: Keep text on coloured backgrounds readable
+        tvMunicipalityName.setTextColor(
+                getColor(android.R.color.white)
+        );
+
+        btnVisitSite.setTextColor(
+                getColor(android.R.color.white)
+        );
     }
 }
