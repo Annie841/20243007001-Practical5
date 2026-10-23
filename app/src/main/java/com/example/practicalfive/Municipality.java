@@ -6,6 +6,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toast;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +24,24 @@ public class Municipality extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_municipality);
+        // Prevent content from overlapping system bars
+        ViewCompat.setOnApplyWindowInsetsListener(
+                findViewById(R.id.main), (v, insets) -> {
+
+                    Insets systemBars = insets.getInsets(
+                            WindowInsetsCompat.Type.systemBars()
+                    );
+
+                    v.setPadding(
+                            systemBars.left,
+                            systemBars.top,
+                            systemBars.right,
+                            systemBars.bottom
+                    );
+
+                    return insets;
+                }
+        );
 
         tvMunicipalityName = findViewById(R.id.tvMunicipalityName);
         tvMunicipalityInfo = findViewById(R.id.tvMunicipalityInfo);
@@ -28,7 +49,9 @@ public class Municipality extends AppCompatActivity {
         btnVisitSite = findViewById(R.id.btnVisitSite);
 
         // Receive municipality name from MainActivity
-        String municipality = getIntent().getStringExtra("municipality");
+        String municipality = getIntent().getStringExtra(
+                MainActivity.EXTRA_MUNICIPALITY
+        );
 
         // Validate using TextProcessor
         TextProcessor processor = new TextProcessor();
