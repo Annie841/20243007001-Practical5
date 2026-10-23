@@ -11,6 +11,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.content.ActivityNotFoundException;
+import android.net.Uri;
 
 public class Municipality extends AppCompatActivity {
 
@@ -49,6 +52,8 @@ public class Municipality extends AppCompatActivity {
         tvMunicipalityInfo = findViewById(R.id.tvMunicipalityInfo);
         ivMunicipality = findViewById(R.id.ivMunicipality);
         btnVisitSite = findViewById(R.id.btnVisitSite);
+
+
 
         // Step 2: Receive municipality name
         String municipality = getIntent().getStringExtra(
@@ -158,5 +163,60 @@ public class Municipality extends AppCompatActivity {
         btnVisitSite.setTextColor(
                 getColor(android.R.color.white)
         );
+        // Section 10: Open the official municipality website
+
+        btnVisitSite.setOnClickListener(v -> {
+
+            // Step 1: Determine the official website
+            String websiteUrl;
+
+            switch (validName) {
+
+                case "Beijing":
+                    websiteUrl = "https://english.beijing.gov.cn/";
+                    break;
+
+                case "Shanghai":
+                    websiteUrl = "https://english.shanghai.gov.cn/";
+                    break;
+
+                case "Tianjin":
+                    websiteUrl = "https://en.tj.gov.cn/";
+                    break;
+
+                case "Chongqing":
+                    websiteUrl = "https://english.cq.gov.cn/";
+                    break;
+
+                default:
+                    Toast.makeText(
+                            Municipality.this,
+                            "Invalid municipality",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    return;
+            }
+
+            // Step 2: Create an implicit Intent
+            Intent intent = new Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(websiteUrl)
+            );
+
+            // Step 3: Open the official website
+            try {
+                startActivity(intent);
+
+            } catch (ActivityNotFoundException e) {
+
+                // Step 4: Handle the case where no browser is available
+                Toast.makeText(
+                        Municipality.this,
+                        "No application available to open the website",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+
+        });
     }
 }
